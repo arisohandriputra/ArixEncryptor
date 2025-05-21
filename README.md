@@ -42,9 +42,9 @@ encryptor.EncryptFile("test.txt", "password123", true);
 
 // Decrypt file
 encryptor.DecryptFile("test.enc", "password123");
-
+```
 ### Basic Example (VB.NET)
-```vb
+```vbnet
 Public Class MainForm
     Private ReadOnly _encryptor As New Encryptor()
     
