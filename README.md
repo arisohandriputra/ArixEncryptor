@@ -42,3 +42,23 @@ encryptor.EncryptFile("test.txt", "password123", true);
 
 // Decrypt file
 encryptor.DecryptFile("test.enc", "password123");
+
+### Basic Example (VB.NET)
+```vb
+Public Class MainForm
+    Private ReadOnly _encryptor As New Encryptor()
+    
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AddHandler _encryptor.ProgressChanged, 
+            Sub(progress) ProgressBar1.Invoke(Sub() ProgressBar1.Value = progress)
+            
+        AddHandler _encryptor.OperationCompleted,
+            Sub(success, message) MessageBox.Show(message, If(success, "Success", "Error"))
+    End Sub
+
+    Private Sub btnEncrypt_Click(sender As Object, e As EventArgs) Handles btnEncrypt.Click
+        If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+            _encryptor.EncryptFile(OpenFileDialog1.FileName, txtPassword.Text, True)
+        End If
+    End Sub
+End Class
